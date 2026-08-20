@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Единицы измерения информации · 7 класс</title>
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: linear-gradient(145deg, #0b1a2e 0%, #1a2f44 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* главная карточка презентации */
+        .presentation-container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 56px;
+            padding: 30px 30px 40px;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        /* слайд-шоу */
+        .slide-wrapper {
+            background: #f0f6fe;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.6) 0%, rgba(235, 245, 255, 0.9) 100%);
+            border-radius: 48px;
+            padding: 28px 30px 20px;
+            box-shadow: inset 0 8px 12px rgba(0,0,0,0.05), 0 20px 30px -8px rgba(0,0,0,0.4);
+            transition: all 0.2s;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* область контента слайда */
+        .slide-content {
+            flex: 1;
+            padding: 10px 12px 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        /* крупный шрифт для урока */
+        .slide-content h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #0b2b44;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            border-left: 8px solid #2a7faa;
+            padding-left: 24px;
+            text-shadow: 0 2px 4px rgba(0,20,40,0.08);
+        }
+
+        .slide-content h2 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            color: #113a55;
+            margin-top: 8px;
+            margin-bottom: 18px;
+        }
+
+        .slide-content h3 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #1f4b6b;
+            margin: 16px 0 10px;
+        }
+
+        .slide-content p, .slide-content li {
+            font-size: 2.0rem;
+            line-height: 1.5;
+            color: #1d3a4e;
+            margin-bottom: 14px;
+        }
+
+        .slide-content ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .slide-content ul li {
+            font-size: 2.0rem;
+            padding: 6px 0 6px 44px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="%232a7faa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
+            background-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .slide-content .highlight {
+            background: #d4e7f7;
+            padding: 4px 18px;
+            border-radius: 60px;
+            display: inline-block;
+            font-weight: 600;
+            color: #003153;
+            font-size: 2.2rem;
+        }
+
+        .slide-content .example-block {
+            background: rgba(42, 127, 170, 0.08);
+            border-radius: 32px;
+            padding: 20px 28px;
+            margin: 16px 0 10px;
+            border: 1px solid rgba(42, 127, 170, 0.25);
+        }
+
+        .slide-content .example-block p {
+            font-size: 2.0rem;
+            margin: 6px 0;
+        }
+
+        .slide-content .task-solution {
+            background: #dcebf8;
+            border-radius: 28px;
+            padding: 18px 28px;
+            margin-top: 14px;
+            border-left: 6px solid #1f6390;
+        }
+
+        .slide-content .task-solution strong {
+            font-size: 2.0rem;
+            color: #003459;
+        }
+
+        /* кнопки навигации */
+        .navigation-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 28px;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            background: #eef5fc;
+            border: none;
+            width: 70px;
+            height: 70px;
+            border-radius: 40px;
+            font-size: 2.4rem;
+            color: #1a4663;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #b0c9dd, 0 6px 16px rgba(0, 0, 0, 0.2);
+            transition: all 0.07s ease-in;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f2f9ff;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .nav-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #b0c9dd;
+        }
+
+        .nav-btn:hover {
+            background: #ffffff;
+            color: #003153;
+            box-shadow: 0 8px 0 #9bb3cc, 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-btn i {
+            font-size: 2.8rem;
+        }
+
+        /* индикатор страниц */
+        .page-indicator {
+            font-size: 2.2rem;
+            background: rgba(0, 20, 40, 0.6);
+            backdrop-filter: blur(4px);
+            padding: 6px 32px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        /* анимации при переключении слайдов */
+        .fade-slide {
+            animation: fadeSlide 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @keyframes fadeSlide {
+            0% { opacity: 0.3; transform: translateY(18px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* мобильная адаптация */
+        @media (max-width: 780px) {
+            .presentation-container { padding: 16px; }
+            .slide-content h1 { font-size: 2.4rem; padding-left: 16px; }
+            .slide-content h2 { font-size: 2.0rem; }
+            .slide-content p, .slide-content li, .slide-content .example-block p { font-size: 1.6rem; }
+            .slide-content .highlight { font-size: 1.8rem; }
+            .nav-btn { width: 60px; height: 60px; font-size: 2rem; }
+            .page-indicator { font-size: 1.6rem; padding: 4px 18px; }
+        }
+
+        @media (max-width: 500px) {
+            .slide-content h1 { font-size: 2.0rem; }
+            .slide-content h2 { font-size: 1.8rem; }
+            .slide-content p, .slide-content li { font-size: 1.4rem; }
+            .navigation-bar { gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="presentation-container">
+    <div class="slide-wrapper">
+        <!-- контент слайда -->
+        <div id="slideContent" class="slide-content fade-slide">
+            <!-- заполняется js -->
+        </div>
+
+        <!-- панель навигации: кнопки по центру (слева/справа) -->
+        <div class="navigation-bar">
+            <button class="nav-btn" id="prevSlide" aria-label="Предыдущий слайд"><i class="fas fa-chevron-left"></i></button>
+            <span class="page-indicator" id="pageIndicator">1 / 6</span>
+            <button class="nav-btn" id="nextSlide" aria-label="Следующий слайд"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---- ДАННЫЕ СЛАЙДОВ ----
+        const slides = [
+            // 1. Титул + определения
+            {
+                title: '📏 Единицы измерения информации',
+                content: `
+                    <h1>Биты, байты, килобайты...</h1>
+                    <ul>
+                        <li><span class="highlight">Бит</span> — минимальная единица (0 или 1)</li>
+                        <li><span class="highlight">Байт</span> = 8 бит</li>
+                        <li><span class="highlight">1 Кбайт</span> = 1024 байт</li>
+                        <li><span class="highlight">1 Мбайт</span> = 1024 Кбайт</li>
+                    </ul>
+                    <p style="margin-top: 18px;">🔹 1 Мбайт = 1024 × 1024 байт = 1 048 576 байт</p>
+                `
+            },
+            // 2. Перевод из больших в меньшие
+            {
+                title: '⬇️ Перевод: из больших → в меньшие',
+                content: `
+                    <h2>Умножаем на 1024</h2>
+                    <div class="example-block">
+                        <p><strong>Пример:</strong> 5 Мбайт = ? Кбайт</p>
+                        <p style="font-size:2.4rem; background: #d4e3f0; border-radius: 30px; padding: 8px 18px; display:inline-block;">5 × 1024 = 5120 Кбайт</p>
+                        <p style="margin-top: 14px;"><strong>2 Гбайт</strong> = 2 × 1024 = 2048 Мбайт</p>
+                    </div>
+                    <p>✅ Чтобы получить байты — умножаем ещё раз на 1024.</p>
+                `
+            },
+            // 3. Перевод из меньших в большие
+            {
+                title: '⬆️ Перевод: из меньших → в большие',
+                content: `
+                    <h2>Делим на 1024</h2>
+                    <div class="example-block">
+                        <p><strong>Пример:</strong> 8192 Кбайт = ? Мбайт</p>
+                        <p style="font-size:2.4rem; background: #d4e3f0; border-radius: 30px; padding: 8px 18px; display:inline-block;">8192 ÷ 1024 = 8 Мбайт</p>
+                        <p style="margin-top: 14px;"><strong>3072 байт</strong> = 3072 ÷ 1024 = 3 Кбайт</p>
+                    </div>
+                    <p>🔁 Чтобы перейти из байт в Кбайт — делим на 1024.</p>
+                `
+            },
+            // 4. Задача 1
+            {
+                title: '🧮 Задача №1',
+                content: `
+                    <div class="task-solution">
+                        <p><strong>📌 Условие:</strong> Файл имеет размер 12 288 байт. Сколько это килобайт?</p>
+                        <p><strong>✏️ Решение:</strong> 12 288 ÷ 1024 = <span style="background: #c5dff0; padding:0 16px; border-radius:30px;">12 Кбайт</span></p>
+                        <p>✅ <em>Ответ: 12 Кбайт</em></p>
+                    </div>
+                    <div style="margin-top:18px; background: #d9e9f5; border-radius: 30px; padding: 12px 20px;">
+                        <p style="font-size:2rem;">💡 <strong>Подсказка:</strong> 1 Кбайт = 1024 байт</p>
+                    </div>
+                `
+            },
+            // 5. Задача 2
+            {
+                title: '🧮 Задача №2',
+                content: `
+                    <div class="task-solution">
+                        <p><strong>📌 Условие:</strong> Переведите 3 Мбайта в байты.</p>
+                        <p><strong>✏️ Решение:</strong> 3 × 1024 × 1024 = 3 145 728 байт</p>
+                        <p>🔢 <span style="background: #c5dff0; padding:0 16px; border-radius:30px;">3 145 728 байт</span></p>
+                    </div>
+                    <div style="margin-top:18px; background: #d9e9f5; border-radius: 30px; padding: 12px 20px;">
+                        <p style="font-size:2rem;">📌 <strong>Цепочка:</strong> Мбайт → Кбайт (×1024) → байт (×1024)</p>
+                    </div>
+                `
+            },
+            // 6. Задача 3 + дополнительная
+            {
+                title: '🧮 Задача №3 · 4',
+                content: `
+                    <div class="task-solution">
+                        <p><strong>📌 Задача 3:</strong> 2560 Кбайт = ? Мбайт</p>
+                        <p><strong>Решение:</strong> 2560 ÷ 1024 = 2,5 Мбайт</p>
+                    </div>
+                    <div class="task-solution" style="margin-top:20px;">
+                        <p><strong>📌 Задача 4:</strong> 1,5 Гбайт = ? Мбайт</p>
+                        <p><strong>Решение:</strong> 1,5 × 1024 = 1536 Мбайт</p>
+                    </div>
+                    <p style="margin-top:16px;">⚡ <span class="highlight">Важно:</span> для Гбайт → Мбайт умножаем на 1024.</p>
+                `
+            }
+        ];
+
+        // ---- СОСТОЯНИЕ ----
+        let currentSlide = 0;
+        const slideContent = document.getElementById('slideContent');
+        const pageIndicator = document.getElementById('pageIndicator');
+
+        // ---- ФУНКЦИЯ ОТОБРАЖЕНИЯ СЛАЙДА ----
+        function renderSlide(index) {
+            const slide = slides[index];
+            if (!slide) return;
+
+            // обновляем контент
+            slideContent.innerHTML = `
+                <h1>${slide.title}</h1>
+                ${slide.content}
+            `;
+            // обновляем индикатор
+            pageIndicator.textContent = `${index + 1} / ${slides.length}`;
+
+            // перезапускаем анимацию
+            slideContent.classList.remove('fade-slide');
+            // триггер перерисовки
+            void slideContent.offsetWidth; 
+            slideContent.classList.add('fade-slide');
+        }
+
+        // ---- НАВИГАЦИЯ ----
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            renderSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            renderSlide(currentSlide);
+        }
+
+        // ---- ИНИЦИАЛИЗАЦИЯ ----
+        document.getElementById('nextSlide').addEventListener('click', nextSlide);
+        document.getElementById('prevSlide').addEventListener('click', prevSlide);
+
+        // клавиатура (стрелки) для удобства учителя
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        // Показываем первый слайд
+        renderSlide(0);
+    })();
+</script>
+</body>
+</html>
